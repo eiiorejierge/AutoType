@@ -1,98 +1,291 @@
+/* ── AutoType — Black & White theme ─────────────────────────────────────── */
 :root {
+  --bg:          #000000;
+  --surface:     #0c0c0c;
+  --surface2:    #161616;
+  --border:      #2e2e2e;
+  --border-hi:   #555555;
+  --text:        #f0f0f0;
+  --text-muted:  #777777;
+  --accent:      #ffffff;
+  --danger:      #ff4444;
+
   color-scheme: dark;
-  font-family: Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif;
 }
+
+/* ── Reset / Base ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: #101423;
-  color: #e7ecff;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
+/* ── Container ───────────────────────────────────────────────────────────── */
 .container {
-  max-width: 860px;
-  margin: 24px auto;
-  padding: 20px;
-  background: #171d33;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 880px;
+  margin: 28px auto;
+  padding: 32px 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 20px 60px rgba(0,0,0,0.8);
 }
 
-h1,
-h2 {
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-mark svg {
+  width: 22px;
+  height: 22px;
+}
+
+h1 {
   margin: 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--accent);
 }
 
 .subtitle {
-  color: #bcc8f0;
-  margin: 8px 0 20px;
+  margin: 0 0 26px 52px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
 }
 
+/* ── Divider ─────────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 22px 0;
+}
+
+/* ── Labels ──────────────────────────────────────────────────────────────── */
 label {
   display: block;
-  margin: 12px 0 8px;
-  font-size: 0.95rem;
+  margin-bottom: 7px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
+/* ── Textareas & Inputs ──────────────────────────────────────────────────── */
 textarea,
-input {
+input[type="number"] {
   width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #2d375d;
-  border-radius: 8px;
-  background: #111733;
-  color: #e7ecff;
-  padding: 10px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus,
+input[type="number"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.07);
 }
 
 textarea {
-  min-height: 140px;
+  min-height: 130px;
   resize: vertical;
+  line-height: 1.55;
 }
 
+textarea[readonly] {
+  color: #aaaaaa;
+  cursor: default;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ── Controls row ────────────────────────────────────────────────────────── */
 .controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 8px;
+  gap: 14px;
+  margin-top: 18px;
 }
 
+.control-group { display: flex; flex-direction: column; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
 .button-row {
   display: flex;
   gap: 10px;
-  margin: 18px 0;
+  margin: 22px 0;
+  flex-wrap: wrap;
 }
 
 button {
-  border: 0;
-  border-radius: 8px;
-  background: #5e7bff;
-  color: white;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.download-card {
-  margin-top: 22px;
-  padding: 16px;
-  background: #111733;
-  border: 1px solid #2d375d;
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid var(--border-hi);
   border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  padding: 10px 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.12s,
+    box-shadow 0.2s;
+  user-select: none;
+}
+
+/* Ripple element */
+button .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-anim 0.55s linear;
+  background: rgba(255,255,255,0.18);
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Hover */
+button:not(:disabled):hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+}
+
+/* Active (press) */
+button:not(:disabled):active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: none;
+}
+
+/* Disabled */
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  border-color: var(--border);
+}
+
+/* Primary variant — Start button */
+button.btn-primary {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+button.btn-primary:not(:disabled):hover {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: 0 0 22px rgba(255,255,255,0.2);
+}
+
+/* Danger variant — Stop button */
+button.btn-danger:not(:disabled) {
+  border-color: #ff4444;
+  color: #ff6666;
+}
+
+button.btn-danger:not(:disabled):hover {
+  background: #ff4444;
+  color: #fff;
+  border-color: #ff4444;
+  box-shadow: 0 0 18px rgba(255,68,68,0.3);
+}
+
+/* ── Download card ───────────────────────────────────────────────────────── */
+.download-card {
+  margin-top: 24px;
+  padding: 20px 22px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.download-card-text h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.download-card-text p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.download-card button {
+  white-space: nowrap;
+  padding: 11px 24px;
+  font-size: 0.88rem;
 }
 
 .status {
-  min-height: 22px;
-  color: #9cc4ff;
+  width: 100%;
+  min-height: 20px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 4px;
 }
 
-code {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 2px 6px;
-  border-radius: 6px;
+/* ── Scroll bar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
 }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hi); }

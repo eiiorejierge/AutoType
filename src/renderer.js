@@ -8,6 +8,22 @@ const clearBtn = document.getElementById('clearBtn');
 const downloadSetupBtn = document.getElementById('downloadSetupBtn');
 const downloadStatus = document.getElementById('downloadStatus');
 
+// ── Ripple effect on all buttons ─────────────────────────────────────────
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    if (this.disabled) return;
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 1.5;
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top  - size / 2;
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px`;
+    this.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+});
+
 let typingTimer = null;
 let typingIndex = 0;
 let sourceText = '';
