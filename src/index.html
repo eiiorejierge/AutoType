@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoType</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>AutoType</h1>
+      <p class="subtitle">Paste a prompt, choose WPM, and watch it type naturally.</p>
+
+      <label for="promptInput">Prompt</label>
+      <textarea id="promptInput" placeholder="Paste the text to type..."></textarea>
+
+      <div class="controls">
+        <label for="wpmInput">WPM</label>
+        <input id="wpmInput" type="number" min="10" max="300" value="70" />
+
+        <label for="accuracyInput">Typing Accuracy (%)</label>
+        <input id="accuracyInput" type="number" min="70" max="100" value="98" />
+      </div>
+
+      <div class="button-row">
+        <button id="startBtn">Start Typing</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="clearBtn">Clear Output</button>
+      </div>
+
+      <label for="typedOutput">Typed Output</label>
+      <textarea id="typedOutput" readonly></textarea>
+
+      <div class="download-card">
+        <h2>Download Windows Setup (.exe)</h2>
+        <p>
+          This button exports the built installer from <code>dist/</code>. If it is missing,
+          run <code>npm run dist:win</code> first.
+        </p>
+        <button id="downloadSetupBtn">Download Setup EXE</button>
+        <p id="downloadStatus" class="status"></p>
+      </div>
+    </main>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
