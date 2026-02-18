@@ -8,38 +8,60 @@
   </head>
   <body>
     <main class="container">
-      <h1>AutoType</h1>
-      <p class="subtitle">Paste a prompt, choose WPM, and watch it type naturally.</p>
 
+      <!-- Header -->
+      <div class="app-header">
+        <div class="logo-mark">
+          <!-- Keyboard / type icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="13" rx="2"/>
+            <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8"/>
+          </svg>
+        </div>
+        <h1>AutoType</h1>
+      </div>
+      <p class="subtitle">Paste text, set speed &amp; accuracy, and watch it type naturally.</p>
+
+      <div class="divider"></div>
+
+      <!-- Prompt input -->
       <label for="promptInput">Prompt</label>
-      <textarea id="promptInput" placeholder="Paste the text to type..."></textarea>
+      <textarea id="promptInput" placeholder="Paste the text you want to type here…"></textarea>
 
+      <!-- WPM + Accuracy controls -->
       <div class="controls">
-        <label for="wpmInput">WPM</label>
-        <input id="wpmInput" type="number" min="10" max="300" value="70" />
-
-        <label for="accuracyInput">Typing Accuracy (%)</label>
-        <input id="accuracyInput" type="number" min="70" max="100" value="98" />
+        <div class="control-group">
+          <label for="wpmInput">Speed (WPM)</label>
+          <input id="wpmInput" type="number" min="10" max="300" value="70" />
+        </div>
+        <div class="control-group">
+          <label for="accuracyInput">Accuracy (%)</label>
+          <input id="accuracyInput" type="number" min="70" max="100" value="98" />
+        </div>
       </div>
 
+      <!-- Action buttons -->
       <div class="button-row">
-        <button id="startBtn">Start Typing</button>
-        <button id="stopBtn" disabled>Stop</button>
-        <button id="clearBtn">Clear Output</button>
+        <button id="startBtn" class="btn-primary">▶ Start Typing</button>
+        <button id="stopBtn"  class="btn-danger" disabled>■ Stop</button>
+        <button id="clearBtn">✕ Clear Output</button>
       </div>
 
+      <!-- Output -->
       <label for="typedOutput">Typed Output</label>
-      <textarea id="typedOutput" readonly></textarea>
+      <textarea id="typedOutput" readonly placeholder="Output will appear here…"></textarea>
 
+      <!-- Download card -->
       <div class="download-card">
-        <h2>Download Windows Setup (.exe)</h2>
-        <p>
-          This button exports the built installer from <code>dist/</code>. If it is missing,
-          run <code>npm run dist:win</code> first.
-        </p>
-        <button id="downloadSetupBtn">Download Setup EXE</button>
-        <p id="downloadStatus" class="status"></p>
+        <div class="download-card-text">
+          <h2>Windows Installer (.exe)</h2>
+          <p>Double-click the downloaded file to install AutoType — no Node.js required.</p>
+          <p id="downloadStatus" class="status"></p>
+        </div>
+        <button id="downloadSetupBtn">⬇ Download Setup EXE</button>
       </div>
+
     </main>
 
     <script src="renderer.js"></script>
