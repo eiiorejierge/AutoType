@@ -25,6 +25,21 @@
 
       <div class="divider"></div>
 
+      <!-- Window Target Selector -->
+      <div class="window-target-section">
+        <label for="windowSelect">Target Window</label>
+        <div class="window-select-row">
+          <select id="windowSelect">
+            <option value="">— Type in output area below —</option>
+          </select>
+          <button id="refreshWindowsBtn" class="btn-icon" title="Refresh window list">&#8635;</button>
+        </div>
+        <p class="window-hint" id="windowHint">Loading available windows…</p>
+        <p class="countdown-display" id="countdownDisplay"></p>
+      </div>
+
+      <div class="divider"></div>
+
       <!-- Prompt input -->
       <label for="promptInput">Prompt</label>
       <textarea id="promptInput" placeholder="Paste the text you want to type here…"></textarea>
@@ -43,13 +58,13 @@
 
       <!-- Action buttons -->
       <div class="button-row">
-        <button id="startBtn" class="btn-primary">▶ Start Typing</button>
-        <button id="stopBtn"  class="btn-danger" disabled>■ Stop</button>
-        <button id="clearBtn">✕ Clear Output</button>
+        <button id="startBtn" class="btn-primary">&#9654; Start Typing</button>
+        <button id="stopBtn"  class="btn-danger" disabled>&#9632; Stop</button>
+        <button id="clearBtn">&#10005; Clear Output</button>
       </div>
 
       <!-- Output -->
-      <label for="typedOutput">Typed Output</label>
+      <label for="typedOutput">Typed Output <span id="outputModeLabel" class="output-mode-label"></span></label>
       <textarea id="typedOutput" readonly placeholder="Output will appear here…"></textarea>
 
       <!-- Download card -->
@@ -59,7 +74,7 @@
           <p>Double-click the downloaded file to install AutoType — no Node.js required.</p>
           <p id="downloadStatus" class="status"></p>
         </div>
-        <button id="downloadSetupBtn">⬇ Download Setup EXE</button>
+        <button id="downloadSetupBtn">&#11015; Download Setup EXE</button>
       </div>
 
     </main>
